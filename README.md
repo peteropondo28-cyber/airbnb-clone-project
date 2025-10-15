@@ -137,3 +137,82 @@ Features: Post and manage reviews for properties.
 7. Database Optimizations
 Indexing: Implement indexes for fast retrieval of frequently accessed data.
 Caching: Use caching strategies to reduce database load and improve performance.
+
+## API Security
+1. Authentication
+
+All API endpoints that access sensitive data will require authentication using JSON Web Tokens (JWT).
+
+Users must log in to receive a secure token.
+
+Each request must include this token in the authorization header (Bearer <token>).
+
+Tokens will have expiration times to prevent long-term misuse.
+
+Why it’s important:
+Authentication ensures that only verified users can access protected endpoints, preventing unauthorized access to user accounts and private data.
+
+2. Authorization
+
+Different users will have different permissions based on their roles (e.g., admin, host, guest).
+
+Role-based access control (RBAC) will be used.
+
+For example, only hosts can manage properties, while admins can manage all resources.
+
+Why it’s important:
+Authorization ensures that even authenticated users can only perform actions they’re permitted to, reducing risks of privilege abuse.
+
+3. Data Encryption
+
+All communication between the client and server will use HTTPS (SSL/TLS) encryption.
+
+Sensitive data like passwords will be hashed using bcrypt before storage.
+
+Payment details will be encrypted or handled by secure payment gateways.
+
+Why it’s important:
+Encryption prevents attackers from intercepting or altering data during transmission, protecting user credentials and payment details.
+
+4. Rate Limiting
+
+To prevent abuse and denial-of-service (DoS) attacks, rate limiting will be applied on API endpoints.
+
+Each client will have a maximum number of requests allowed per minute/hour.
+
+Exceeding the limit will result in temporary blocking or throttling.
+
+Why it’s important:
+Rate limiting protects the API from malicious overloads and ensures fair access for all users.
+
+5. Input Validation & Sanitization
+
+All inputs from clients will be validated and sanitized to prevent SQL injection, XSS, and other attacks.
+
+Libraries such as Joi or express-validator will be used for request validation.
+
+Why it’s important:
+Proper validation ensures data integrity and prevents attackers from injecting malicious code or breaking the system.
+
+6. Secure Payment Handling
+
+Payments will be processed through a trusted third-party provider (e.g., PayPal, Stripe, or M-Pesa API).
+
+The API will never store raw card or transaction data.
+
+Payment tokens and references will be used instead of sensitive details.
+
+Why it’s important:
+This protects both the platform and users from financial fraud and complies with global payment security standards (PCI DSS).
+
+7. Error Handling & Logging
+
+API errors will be handled gracefully without exposing sensitive information.
+
+Logs will record failed login attempts and suspicious activity for analysis.
+
+Why it’s important:
+Controlled error messages prevent attackers from learning about system internals, while logs support auditing and security monitoring.
+
+In summary:
+These security measures ensure that user data, bookings, properties, and payments are well protected, maintaining user trust and system reliability.
