@@ -35,7 +35,7 @@ Docker: Containerization tool for consistent development and deployment environm
 CI/CD Pipelines: Automated pipelines for testing and deploying code changes.
 
 ##Database Design
-Users
+1.Users
 Field	   Description
 user_id	Unique identifier for each user.
 name	Full name of the user.
@@ -53,7 +53,7 @@ A User can make multiple Bookings.
 
 A User can leave multiple Reviews.
 
-Properties
+2.Properties
 Field      	Description
 property_id	Unique identifier for each property.
 owner_id	References the user_id of the property owner.
@@ -70,7 +70,7 @@ A Property belongs to one User (owner).
 
 A Property can have multiple Bookings and Reviews.
 
-Bookings
+3.Bookings
 Field	      Description
 booking_id	Unique identifier for each booking.
 user_id	References the user who made the booking.
@@ -87,7 +87,7 @@ A Booking belongs to one User and one Property.
 
 A Booking can have one Payment.
 
- Reviews
+ 4.Reviews
 Field	      Description
 review_id	Unique identifier for each review.
 user_id	References the user who wrote the review.
@@ -100,7 +100,7 @@ Relationships:
 
 A Review belongs to one User and one Property.
 
-Payments
+5.Payments
 Field	Description
 payment_id	Unique identifier for each payment.
 booking_id	References the booking being paid for.
@@ -114,3 +114,26 @@ Relationships:
 
 A Payment belongs to one Booking and one User.
 
+## Feature Breakdown
+1.API Documentation
+OpenAPI Standard: The backend APIs are documented using the OpenAPI standard to ensure clarity and ease of integration.
+Django REST Framework: Provides a comprehensive RESTful API for handling CRUD operations on user and property data.
+GraphQL: Offers a flexible and efficient query mechanism for interacting with the backend.
+2. User Authentication
+Endpoints: /users/, /users/{user_id}/
+Features: Register new users, authenticate, and manage user profiles.
+3. Property Management
+Endpoints: /properties/, /properties/{property_id}/
+Features: Create, update, retrieve, and delete property listings.
+4. Booking System
+Endpoints: /bookings/, /bookings/{booking_id}/
+Features: Make, update, and manage bookings, including check-in and check-out details.
+5. Payment Processing
+Endpoints: /payments/
+Features: Handle payment transactions related to bookings.
+6. Review System
+Endpoints: /reviews/, /reviews/{review_id}/
+Features: Post and manage reviews for properties.
+7. Database Optimizations
+Indexing: Implement indexes for fast retrieval of frequently accessed data.
+Caching: Use caching strategies to reduce database load and improve performance.
