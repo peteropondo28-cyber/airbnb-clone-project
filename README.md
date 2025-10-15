@@ -33,3 +33,84 @@ Celery: For handling asynchronous tasks such as sending notifications or process
 Redis: Used for caching and session management.
 Docker: Containerization tool for consistent development and deployment environments.
 CI/CD Pipelines: Automated pipelines for testing and deploying code changes.
+
+##Database Design
+Users
+Field	   Description
+user_id	Unique identifier for each user.
+name	Full name of the user.
+email	User’s email address (must be unique).
+password_hash	Encrypted password for login authentication.
+role	Specifies user type (e.g., admin, host, guest).
+phone_number	Contact number.
+date_joined	Timestamp for when the user created their account.
+
+Relationships:
+
+A User can own multiple Properties (if host).
+
+A User can make multiple Bookings.
+
+A User can leave multiple Reviews.
+
+Properties
+Field      	Description
+property_id	Unique identifier for each property.
+owner_id	References the user_id of the property owner.
+title	Name or short description of the property.
+description	Detailed description of the property.
+location	Address or city where the property is located.
+price_per_night	Cost of renting the property per night.
+availability_status	Indicates if the property is available for booking.
+created_at	Timestamp when the property was added.
+
+Relationships:
+
+A Property belongs to one User (owner).
+
+A Property can have multiple Bookings and Reviews.
+
+Bookings
+Field	      Description
+booking_id	Unique identifier for each booking.
+user_id	References the user who made the booking.
+property_id	References the booked property.
+check_in_date	Date the booking starts.
+check_out_date	Date the booking ends.
+total_amount	Total cost of the booking.
+booking_status	e.g., pending, confirmed, cancelled.
+created_at	Timestamp for when the booking was made.
+
+Relationships:
+
+A Booking belongs to one User and one Property.
+
+A Booking can have one Payment.
+
+ Reviews
+Field	      Description
+review_id	Unique identifier for each review.
+user_id	References the user who wrote the review.
+property_id	References the property being reviewed.
+rating	Numeric rating (e.g., 1–5 stars).
+comment	Text feedback about the property.
+created_at	Timestamp when the review was posted.
+
+Relationships:
+
+A Review belongs to one User and one Property.
+
+Payments
+Field	Description
+payment_id	Unique identifier for each payment.
+booking_id	References the booking being paid for.
+user_id	References the user making the payment.
+amount	Amount paid.
+payment_method	e.g., credit card, PayPal, M-Pesa.
+payment_status	e.g., pending, completed, failed.
+payment_date	Timestamp when payment was made.
+
+Relationships:
+
+A Payment belongs to one Booking and one User.
+
