@@ -240,7 +240,7 @@ Reduced Human Error: Automation minimizes mistakes caused by manual deployment.
 
 Improved Collaboration: Developers can merge changes confidently knowing tests will validate everything automatically.
 
-🧰 Tools and Technologies
+Tools and Technologies
 
 The following tools can be used to implement the CI/CD pipeline:
 
@@ -257,5 +257,5 @@ GitHub Actions triggers automated build and test scripts.
 If tests pass, the application is containerized using Docker.
 The latest version is deployed automatically to the hosting environment (e.g., Heroku).
 
-✅ In summary:
+In summary:
 The CI/CD pipeline ensures that the AirBnb Clone project remains stable, scalable, and continuously up-to-date with minimal manual effort.
