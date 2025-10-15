@@ -216,3 +216,46 @@ Controlled error messages prevent attackers from learning about system internals
 
 In summary:
 These security measures ensure that user data, bookings, properties, and payments are well protected, maintaining user trust and system reliability.
+
+## CI/CD Pipeline
+What is CI/CD?
+CI/CD (Continuous Integration and Continuous Deployment) is a set of practices that automate the process of building, testing, and deploying code. It ensures that new changes to the project are automatically verified, integrated, and delivered without manual intervention.
+
+Continuous Integration (CI):
+Every time code is pushed to the repository, automated tests run to check for errors, ensuring that new updates don’t break existing features.
+
+Continuous Deployment (CD):
+Once the code passes all tests, it can be automatically deployed to staging or production environments, making updates faster and more reliable.
+
+Why CI/CD is Important for This Project?
+Implementing a CI/CD pipeline for the AirBnb Clone Project ensures:
+
+Faster Development Cycles: New features can be tested and released quickly.
+
+Higher Code Quality: Automated tests detect bugs early before deployment.
+
+Consistency: Every build and deployment follows the same repeatable process.
+
+Reduced Human Error: Automation minimizes mistakes caused by manual deployment.
+
+Improved Collaboration: Developers can merge changes confidently knowing tests will validate everything automatically.
+
+🧰 Tools and Technologies
+
+The following tools can be used to implement the CI/CD pipeline:
+
+Tool	Purpose
+GitHub Actions	Automate build, test, and deployment workflows directly from the GitHub repository.
+Docker	Containerize the application for consistent environments across development and production.
+Jest / Mocha	Run automated unit and integration tests.
+Heroku / Render / AWS	Deploy the application automatically after successful builds.
+ESLint & Prettier	Ensure code consistency and style during the CI process.
+
+Example Workflow (GitHub Actions)
+Developer pushes code to GitHub.
+GitHub Actions triggers automated build and test scripts.
+If tests pass, the application is containerized using Docker.
+The latest version is deployed automatically to the hosting environment (e.g., Heroku).
+
+✅ In summary:
+The CI/CD pipeline ensures that the AirBnb Clone project remains stable, scalable, and continuously up-to-date with minimal manual effort.
